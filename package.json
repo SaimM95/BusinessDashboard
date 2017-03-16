@@ -1,0 +1,25 @@
+{
+  "name": "business_dashboard",
+  "version": "1.0.0",
+  "description": "Business Dashboard",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SaimM95/BusinessDashboard.git"
+  },
+  "author": "Saim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SaimM95/BusinessDashboard/issues"
+  },
+  "homepage": "https://github.com/SaimM95/BusinessDashboard#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-jade": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "jade": "^1.11.0"
+  }
+}
