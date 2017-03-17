@@ -3,8 +3,40 @@
   <head>
     <title>Business Dashboard</title>
     <meta id="meta" name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
   </head>
-  <body>
-    <h1>Hello World</h1>
+  <body ng-app="AppBody">
+    <div ng-controller="LoginController" ng-init="init()">
+      <div>
+        <div>Email</div>
+        <div>
+          <input type="text" ng-model="email">
+        </div>
+      </div>
+      <div>
+        <div>Password</div>
+        <div>
+          <input type="text" ng-model="password">
+        </div>
+      </div>
+      <div id="input-retype_password" style="display:none">
+        <div>Retype Password</div>
+        <div>
+          <input id="input-retype_password" type="text" ng-model="repassword">
+        </div>
+      </div>
+      <div>
+        <button ng-click="signInUser(email, password)">{{signInMode}}</button>
+      </div>
+      <div>
+        <button id="btn-create_new_user" ng-click="createNewUser(email, password)">Create New User</button>
+      </div>
+      <div id="error-box" style="color:red" ng-bind="errorMessage"></div>
+    </div>
+    <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="javascripts/global.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
+    <script src="javascripts/init-firebase.js"></script>
+    <script src="javascripts/login.js"></script>
   </body>
 </html>
