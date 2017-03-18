@@ -1,5 +1,6 @@
 var LOGGING = true;
 var appMain = angular.module('AppBody', []);
+
 var SignInMode = {
 	"SIGNED_IN" : "Sign Out",
 	"SIGNED_OUT" : "Sign In",

@@ -8,4 +8,6 @@ var config = {
 };
 firebase.initializeApp(config);
 
+var firebaseAuth = firebase.auth();
+
 log("Loaded firebase");

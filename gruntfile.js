@@ -8,7 +8,8 @@ module.exports = function(grunt) {
           data: grunt.file.readJSON('data.json')
         },
         files: {
-          'public/index.html': './index.jade'
+          'public/index.html': './index.jade',
+          'public/dashboard.html': './dashboard.jade'
         }
       }
     },
