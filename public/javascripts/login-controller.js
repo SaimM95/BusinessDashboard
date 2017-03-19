@@ -4,9 +4,8 @@
 		var isDashboardOpened = false;
 
 		$scope.init = function() {
-			$scope.email = 'asam@gmail.com'; 
-			$scope.password = 'hello123!@#'; 
-			$scope.signInMode = SignInMode.SIGNED_OUT;
+			// $scope.email = 'asam@gmail.com'; 
+			// $scope.password = 'hello123!@#'; 
 		}
 
 		// Create sign in listener
@@ -23,6 +22,7 @@
 				
 				log("User signed in");
 				// displaySuccessMessage("Successfully signed in");
+				hideMessage();
 				
 				if (isDashboardOpened == false) {
 					openDashboardPage();
@@ -41,13 +41,12 @@
 		}
 
 		$scope.signInUser = function (email, password) {
-			if ($scope.signInMode === SignInMode.SIGNING_UP) {
-				signUpUser(email, password);
-				return;
-			}
-
 			log("triggered sign in");
 			log("Email:" + email + " Password:" + password);
+
+			if (isInvalidCredentials(email, password)) {
+				return;
+			}
 
 			firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
 				// Handle Errors here.
@@ -58,6 +57,10 @@
 		$scope.createNewUser = function(email, password) {
 			log("triggered sign up user");
 			log("Email:" + email + " Password:" + password);
+
+			if (isInvalidCredentials(email, password)) {
+				return;
+			}
 
 			firebaseAuth.createUserWithEmailAndPassword(email, password).catch(function(error) {
 				// Handle Errors here.
@@ -77,6 +80,22 @@
 			log("opening dashboard...")
 			isDashboardOpened = true;
 			$window.location.href = "dashboard.html";
+		}
+
+		function isInvalidCredentials(email, password) {
+			if (email == null || email == undefined || email === "" || 
+				password == null || password == undefined || password === "") {
+				log("Email or password is empty");
+				displayErrorMessageCustom("Email or password field is empty");
+				return true;
+			}
+			return false;
+		}
+
+		function displayErrorMessageCustom(errorMessage) {
+			$scope.message = errorMessage;
+
+			showMessage(true);
 		}
 
 		function displayErrorMessage(error) {

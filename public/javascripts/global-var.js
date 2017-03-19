@@ -1,4 +1,4 @@
-var LOGGING = true;
+var LOGGING = false;
 var appMain = angular.module('AppBody', []);
 
 var SignInMode = {
