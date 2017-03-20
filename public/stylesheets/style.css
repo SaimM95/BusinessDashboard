@@ -38,14 +38,32 @@ body {
       margin-top: 8px;
       margin-bottom: 8px; }
 
+.center-vertical {
+  top: 50%;
+  position: relative;
+  transform: translateY(-50%); }
+
 #top-bar {
   background-color: black;
   height: 100px; }
   #top-bar h2 {
     margin: 0; }
-  #top-bar .container {
-    top: 50%;
-    position: relative;
-    transform: translateY(-50%); }
+
+#graphs .graph {
+  height: 300px;
+  border: 1px solid black; }
+  #graphs .graph .plus-button {
+    width: 100px;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background-color: white; }
+    #graphs .graph .plus-button > i {
+      font-size: 100px;
+      color: green; }
+    #graphs .graph .plus-button:hover {
+      background-color: yellow;
+      cursor: pointer; }
 
 /*# sourceMappingURL=style.css.map */

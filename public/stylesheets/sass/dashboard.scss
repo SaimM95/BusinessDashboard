@@ -1,3 +1,9 @@
+.center-vertical {
+	top: 50%;
+    position: relative;
+    transform: translateY(-50%);
+}
+
 #top-bar {
 	background-color: black;
 	height: 100px;
@@ -6,9 +12,48 @@
 		margin: 0;
 	}
 
-	.container {
-	    top: 50%;
-	    position: relative;
-	    transform: translateY(-50%);
+	// .container {
+	//     top: 50%;
+	//     position: relative;
+	//     transform: translateY(-50%);
+	// }
+}
+
+#graphs {
+	.graph {
+		height: 300px;
+		border: 1px solid black;
+
+		.plus-button {
+			width: 100px;
+			height: 100px;
+			margin-left: auto;
+			margin-right: auto;
+			text-align: center;
+			background-color: white;
+
+			> i {
+	 			font-size: 100px;
+				color: green;
+			}
+			
+			&:hover {
+				background-color: yellow;
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+.footer {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	width: 100%;
+	background-color: #1D2431;
+	text-align: center;
+
+	p {
+		color: white;
+		margin: 0;
 	}
 }

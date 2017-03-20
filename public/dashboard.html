@@ -10,11 +10,40 @@
   </head>
   <body ng-app="AppBody">
     <div id="top-bar" ng-controller="LogoutController">
-      <div class="container">
+      <div class="container center-vertical">
         <h2 class="pull-left">Welcome User!</h2>
         <button ng-click="signOut()" class="btn btn-primary pull-right">Log Out</button>
       </div>
     </div>
+    <div id="graphs">
+      <div class="row">
+        <div id="graph1" class="graph col-md-4">
+          <div class="plus-button img-circle center-vertical"><i aria-hidden="true" class="fa fa-plus-circle"></i></div>
+        </div>
+        <div id="graph2" class="graph col-md-4">
+          <div class="plus-button img-circle center-vertical"><i aria-hidden="true" class="fa fa-plus-circle"></i></div>
+        </div>
+        <div id="graph3" class="graph col-md-4">
+          <div class="plus-button img-circle center-vertical"><i aria-hidden="true" class="fa fa-plus-circle"></i></div>
+        </div>
+      </div>
+      <div class="row">
+        <div id="graph4" class="graph col-md-4">
+          <div class="plus-button img-circle center-vertical"><i aria-hidden="true" class="fa fa-plus-circle"></i></div>
+        </div>
+        <div id="graph5" class="graph col-md-4">
+          <div class="plus-button img-circle center-vertical"><i aria-hidden="true" class="fa fa-plus-circle"></i></div>
+        </div>
+        <div id="graph6" class="graph col-md-4">
+          <div class="plus-button img-circle center-vertical"><i aria-hidden="true" class="fa fa-plus-circle"></i></div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="container">
+        <p>&copy; 2017 Forex Advisor. All Rights Reserved</p>
+      </div>
+    </footer>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
     <script src="javascripts/global-var.js"></script>

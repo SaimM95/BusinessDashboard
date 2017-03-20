@@ -2,6 +2,32 @@ extends layout
 
 block content
 	#top-bar(ng-controller="LogoutController")
-		.container
+		.container.center-vertical
 			h2.pull-left Welcome User!
 			button.btn.btn-primary.pull-right(ng-click="signOut()") Log Out
+
+	#graphs
+		.row
+			#graph1.graph.col-md-4
+				.plus-button.img-circle.center-vertical
+					i.fa.fa-plus-circle(aria-hidden="true")
+			#graph2.graph.col-md-4
+				.plus-button.img-circle.center-vertical
+					i.fa.fa-plus-circle(aria-hidden="true")
+			#graph3.graph.col-md-4
+				.plus-button.img-circle.center-vertical
+					i.fa.fa-plus-circle(aria-hidden="true")
+		.row
+			#graph4.graph.col-md-4
+				.plus-button.img-circle.center-vertical
+					i.fa.fa-plus-circle(aria-hidden="true")
+			#graph5.graph.col-md-4
+				.plus-button.img-circle.center-vertical
+					i.fa.fa-plus-circle(aria-hidden="true")
+			#graph6.graph.col-md-4
+				.plus-button.img-circle.center-vertical
+					i.fa.fa-plus-circle(aria-hidden="true")
+
+	footer
+		.container
+			p &copy; 2017 Forex Advisor. All Rights Reserved
