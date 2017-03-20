@@ -66,4 +66,14 @@ body {
       background-color: yellow;
       cursor: pointer; }
 
+.footer {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 100%;
+  background-color: #1D2431;
+  text-align: center; }
+  .footer p {
+    color: white;
+    margin: 0; }
+
 /*# sourceMappingURL=style.css.map */
