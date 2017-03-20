@@ -1,0 +1,14 @@
+#top-bar {
+	background-color: black;
+	height: 100px;
+
+	h2 {
+		margin: 0;
+	}
+
+	.container {
+	    top: 50%;
+	    position: relative;
+	    transform: translateY(-50%);
+	}
+}

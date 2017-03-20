@@ -2,59 +2,7 @@ $color_SkyBlue : #107FC9;
 
 body {
 	background-color: $color_SkyBlue;
-
 }
 
-.sign-in-page-wrapper {
-	position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-}
-
-.sign-in-box {
-	padding: 24px;
-	background-color: white;
-	border-radius: 8px;
-	width: 320px;
-
-	h1 {
-		text-align: center;
-		margin: 0;
-		margin-bottom: 32px;
-		padding: 0;
-	}
-
-	.input-group {
-		width: 100%;
-		margin-bottom: 16px;
-
-		.input-group-addon {
-			height: 34px;
-			width: 39px;
-		}
-
-		input {
-			width: 100%;
-			padding: 3px;
-		}
-	}
-
-	#msg-box {
-	    margin-bottom: 16px;
-	    padding-top: 8px;
-	    padding-bottom: 8px;
-	    display: none;
-	}
-
-	.btn {
-		display: block;
-		margin-left: auto;
-		margin-right: auto;
-	}
-
-	hr {
-		margin-top: 8px;
-		margin-bottom: 8px;
-	}
-}
+@import "sass/signin";
+@import "sass/dashboard";

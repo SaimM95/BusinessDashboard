@@ -1,5 +1,7 @@
 extends layout
 
 block content
-	div(ng-controller="LogoutController")
-		button.btn.btn-primary(ng-click="signOut()") Log Out
+	#top-bar(ng-controller="LogoutController")
+		.container
+			h2.pull-left Welcome User!
+			button.btn.btn-primary.pull-right(ng-click="signOut()") Log Out

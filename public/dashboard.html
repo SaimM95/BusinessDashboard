@@ -9,8 +9,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
   </head>
   <body ng-app="AppBody">
-    <div ng-controller="LogoutController">
-      <button ng-click="signOut()" class="btn btn-primary">Log Out</button>
+    <div id="top-bar" ng-controller="LogoutController">
+      <div class="container">
+        <h2 class="pull-left">Welcome User!</h2>
+        <button ng-click="signOut()" class="btn btn-primary pull-right">Log Out</button>
+      </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
