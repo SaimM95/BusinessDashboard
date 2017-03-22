@@ -1,4 +1,5 @@
 $color_SkyBlue : #107FC9;
+$mobile_max_width: 992px;
 
 body {
 	background-color: $color_SkyBlue;
@@ -6,3 +7,4 @@ body {
 
 @import "sass/signin";
 @import "sass/dashboard";
+@import "sass/graphs";

@@ -7,27 +7,48 @@ block content
 			button.btn.btn-primary.pull-right(ng-click="signOut()") Log Out
 
 	#graphs
-		.row
-			#graph1.graph.col-md-4
-				.plus-button.img-circle.center-vertical
-					i.fa.fa-plus-circle(aria-hidden="true")
-			#graph2.graph.col-md-4
-				.plus-button.img-circle.center-vertical
-					i.fa.fa-plus-circle(aria-hidden="true")
-			#graph3.graph.col-md-4
-				.plus-button.img-circle.center-vertical
-					i.fa.fa-plus-circle(aria-hidden="true")
-		.row
-			#graph4.graph.col-md-4
-				.plus-button.img-circle.center-vertical
-					i.fa.fa-plus-circle(aria-hidden="true")
-			#graph5.graph.col-md-4
-				.plus-button.img-circle.center-vertical
-					i.fa.fa-plus-circle(aria-hidden="true")
-			#graph6.graph.col-md-4
-				.plus-button.img-circle.center-vertical
-					i.fa.fa-plus-circle(aria-hidden="true")
+		.container-fluid
+			.row
+				#graph1.graph.col-md-4
+					svg#bar-chart(width="600" height="300")
+					//- .plus-button.img-circle.center-vertical
+					//- 	i.fa.fa-plus-circle(aria-hidden="true")
+				#graph2.graph.col-md-4
+					svg#line-chart(width="600" height="300")
+					//- .plus-button.img-circle.center-vertical
+					//- 	i.fa.fa-plus-circle(aria-hidden="true")
+				#graph3.graph.col-md-4
+					svg#pie-chart(width="300" height="300")
+					//- .plus-button.img-circle.center-vertical
+					//- 	i.fa.fa-plus-circle(aria-hidden="true")
+			.row
+				#graph4.graph.col-md-4
+					svg#waterfall-chart(width="600" height="300")
+					//- .plus-button.img-circle.center-vertical
+					//- 	i.fa.fa-plus-circle(aria-hidden="true")
+				#graph5.graph.col-md-4
+					.plus-button.img-circle.center-vertical(onClick="showPopup(5)")
+						i.fa.fa-plus-circle(aria-hidden="true")
+				#graph6.graph.col-md-4
+					.plus-button.img-circle.center-vertical
+						i.fa.fa-plus-circle(aria-hidden="true")
+
+	include pop-up
 
 	footer
 		.container
-			p &copy; 2017 Forex Advisor. All Rights Reserved
+			p &copy; 2017 Business Dashboard. All Rights Reserved
+
+	//- D3 scripts
+	script(src="https://d3js.org/d3.v4.min.js")
+	script(src="javascripts/d3/bar-chart.js")
+	script(src="javascripts/d3/line-chart.js")
+	script(src="javascripts/d3/pie-chart.js")
+	script(src="javascripts/d3/waterfall-chart.js")
+
+	script(src="https://code.jquery.com/jquery-3.1.1.min.js")
+	script(src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js")
+	script(src="javascripts/global-var.js")
+	script(src="javascripts/init-firebase.js")
+	script(src="javascripts/logout-controller.js")
+	script(src="javascripts/Dashboard-controller.js")

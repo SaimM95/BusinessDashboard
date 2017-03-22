@@ -43,6 +43,11 @@ body {
   position: relative;
   transform: translateY(-50%); }
 
+.center-horizontal-vertical {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
 #top-bar {
   background-color: black;
   height: 100px; }
@@ -51,7 +56,14 @@ body {
 
 #graphs .graph {
   height: 300px;
-  border: 1px solid black; }
+  border: 1px solid black;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  text-align: center; }
+  #graphs .graph.active {
+    background-color: white; }
+    #graphs .graph.active .plus-button {
+      display: none; }
   #graphs .graph .plus-button {
     width: 100px;
     height: 100px;
@@ -66,14 +78,94 @@ body {
       background-color: yellow;
       cursor: pointer; }
 
-.footer {
+#fade {
+  width: 100% !important;
+  height: 100% !important;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: white;
+  z-index: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: all .3s ease-in-out; }
+  #fade.active {
+    visibility: visible;
+    opacity: 0.4;
+    z-index: 50; }
+
+#pop-up {
+  width: 35%;
+  position: fixed;
+  box-shadow: 5px 5px 3px 2px;
+  border-radius: 10px;
+  text-align: center;
+  z-index: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: all .3s ease-in-out; }
+  #pop-up.active {
+    visibility: visible;
+    opacity: 1;
+    z-index: 99; }
+  @media (max-width: 992px) {
+    #pop-up {
+      width: 80%; } }
+  #pop-up .title {
+    border: none;
+    margin: 0; }
+  #pop-up hr {
+    margin-top: 12px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #ccc; }
+
+footer {
   padding-top: 20px;
   padding-bottom: 20px;
   width: 100%;
   background-color: #1D2431;
   text-align: center; }
-  .footer p {
+  footer p {
     color: white;
     margin: 0; }
+
+#bar-chart .bar {
+  fill: yellow; }
+#bar-chart .bar:hover {
+  fill: brown; }
+#bar-chart .axis--x path {
+  display: none; }
+
+#line-chart .line {
+  stroke: red; }
+
+#pie-chart .arc text {
+  font: 10px sans-serif;
+  text-anchor: middle; }
+#pie-chart .arc path {
+  stroke: #fff; }
+
+#waterfall-chart svg {
+  font: 10px sans-serif; }
+#waterfall-chart .axis path,
+#waterfall-chart .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges; }
+#waterfall-chart .rect {
+  fill: #333; }
+#waterfall-chart .rect--negative {
+  fill: brown; }
+#waterfall-chart .label {
+  fill: white;
+  font-size: 12px;
+  text-anchor: end; }
+#waterfall-chart .label-change {
+  font-weight: bold; }
+#waterfall-chart .label-value {
+  fill-opacity: 0.8; }
+#waterfall-chart .label--negative {
+  text-anchor: start; }
 
 /*# sourceMappingURL=style.css.map */

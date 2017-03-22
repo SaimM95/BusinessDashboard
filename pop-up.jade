@@ -1,0 +1,71 @@
+//- Pull page fade in the background
+#fade
+
+form#pop-up.center-horizontal-vertical.well.form-horizontal
+    fieldset
+      //- Form Name
+      legend.title Add Graph
+      hr
+
+      //- Graph Type Drop Down
+      .form-group
+        label.col-md-3.control-label Graph Type
+        .col-md-8
+          .input-group
+            span.input-group-addon
+              i.fa.fa-list(aria-hidden="true")
+            select.form-control
+              option(value="") Select graph type
+              option Line Graph
+
+      //- Text input
+      .form-group
+        label.col-md-3.control-label Name
+        | 
+        | 
+        .col-md-8.inputGroupContainer
+          .input-group
+            span.input-group-addon
+              i.fa.fa-user(aria-hidden="true")
+            | 
+            input.form-control(name='first_name', placeholder='Your Name', type='text')
+      //- Text input
+      .form-group
+        label.col-md-3.control-label E-Mail
+        | 
+        |  
+        .col-md-8.inputGroupContainer
+          .input-group
+            span.input-group-addon
+              i.fa.fa-envelope-o(aria-hidden="true")
+            | 
+            input.form-control(name='email', placeholder='E-Mail Address', type='text')
+      //- Text input
+      .form-group
+        label.col-md-3.control-label.left-align Phone #
+        | 
+        |  
+        .col-md-8.inputGroupContainer
+          .input-group
+            span.input-group-addon
+              i.fa.fa-phone(aria-hidden="true")
+            | 
+            input.form-control(name='phone', placeholder='(905)123-4567', type='text')
+      //- Text area
+      .form-group
+        label.col-md-3.control-label Message
+        |  
+        .col-md-8.inputGroupContainer
+          .input-group
+            span.input-group-addon
+              i.fa.fa-pencil(aria-hidden="true")
+            |   &#x9;
+            textarea.form-control(name='comment', placeholder='Type you message here...')
+      //- Button
+      .form-group
+        label.col-md-4.control-label
+        | 
+        .col-md-4
+          button.btn.btn-success(onClick="addGraph()")
+            | Add 
+//- /.container

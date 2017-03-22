@@ -4,6 +4,12 @@
     transform: translateY(-50%);
 }
 
+.center-horizontal-vertical {
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
 #top-bar {
 	background-color: black;
 	height: 100px;
@@ -11,18 +17,23 @@
 	h2 {
 		margin: 0;
 	}
-
-	// .container {
-	//     top: 50%;
-	//     position: relative;
-	//     transform: translateY(-50%);
-	// }
 }
 
 #graphs {
 	.graph {
 		height: 300px;
 		border: 1px solid black;
+		overflow-x: scroll;
+		overflow-y: hidden;
+		text-align: center;
+
+		&.active {
+			background-color: white;
+
+			.plus-button {
+				display: none;
+			}
+		}
 
 		.plus-button {
 			width: 100px;
@@ -45,7 +56,60 @@
 	}
 }
 
-.footer {
+#fade {
+	width: 100% !important;
+	height: 100% !important;
+	position: fixed;
+	left: 0;
+	top: 0;
+	background-color: white;
+	z-index: 0;
+	visibility: hidden;
+	opacity: 0;
+	transition: all .3s ease-in-out;
+
+	&.active {
+		visibility: visible;
+		opacity: 0.4;;
+		z-index: 50;
+	}
+}
+
+#pop-up {
+	width: 35%;
+	position: fixed;
+	box-shadow: 5px 5px 3px 2px;
+	border-radius: 10px;
+	text-align: center;
+	z-index: 0;
+	visibility: hidden;
+	opacity: 0;
+	transition: all .3s ease-in-out;
+
+	&.active {
+		visibility: visible;
+		opacity: 1;
+		z-index: 99;
+	}
+
+	@media (max-width: $mobile_max_width) {
+		width: 80%;
+	}
+
+	.title {
+		border: none;
+		margin: 0;
+	}
+
+	hr {
+		margin-top: 12px;
+	    margin-bottom: 20px;
+	    border: 0;
+	    border-top: 1px solid #ccc;
+	}
+}
+
+footer {
 	padding-top: 20px;
 	padding-bottom: 20px;
 	width: 100%;

@@ -1,0 +1,69 @@
+#bar-chart {
+	.bar {
+		fill: yellow;
+	}
+
+	.bar:hover {
+		fill: brown;
+	}
+
+	.axis--x path {
+		display: none;
+	}
+}
+
+#line-chart {
+	.line {
+		stroke: red;
+	}
+}
+
+#pie-chart {
+	.arc text {
+	  font: 10px sans-serif;
+	  text-anchor: middle;
+	}
+
+	.arc path {
+	  stroke: #fff;
+	}
+}
+
+#waterfall-chart {
+	svg {
+	  font: 10px sans-serif;
+	}
+
+	.axis path,
+	.axis line {
+	  fill: none;
+	  stroke: #000;
+	  shape-rendering: crispEdges;
+	}
+
+	.rect {
+	  fill: #333;
+	}
+
+	.rect--negative {
+	  fill: brown;
+	}
+
+	.label {
+	  fill: white;
+	  font-size: 12px;
+	  text-anchor: end;
+	}
+
+	.label-change {
+	  font-weight: bold;
+	}
+
+	.label-value {
+	  fill-opacity: 0.8;
+	}
+
+	.label--negative {
+	  text-anchor: start;
+	}
+}
