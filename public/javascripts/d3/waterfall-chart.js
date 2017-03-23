@@ -1,8 +1,8 @@
-(function() {
+function addWaterfallChart(selector, filename) {
   var formatChange = d3.format("+d"),
     formatValue = d3.format("d");
 
-  var svg = d3.select("#waterfall-chart");
+  var svg = d3.select(selector);
 
   var margin = {top: 20, right: 40, bottom: 40, left: 80},
       width = +svg.attr("width") - margin.left - margin.right,
@@ -11,7 +11,7 @@
   var g = svg.append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  d3.tsv("data/waterfall-chart-ex.tsv", function(d) {
+  d3.tsv(filename, function(d) {
     d.value = +d.value;
     return d;
   }, function(error, data) {
@@ -67,4 +67,4 @@
         .attr("transform", "translate(" + x(0) + ",0)")
         .call(d3.axisLeft(y).tickSize(0).tickPadding(x(0) + 6));
   });
-})();
+}

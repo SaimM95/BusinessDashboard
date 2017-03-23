@@ -1,5 +1,5 @@
-(function() {
-	var svg = d3.select("#pie-chart"),
+function addPieChart(selector, filename) {
+	var svg = d3.select(selector),
     width = +svg.attr("width"),
     height = +svg.attr("height"),
     radius = Math.min(width, height) / 2,
@@ -19,7 +19,7 @@
 	    .outerRadius(radius - 40)
 	    .innerRadius(radius - 40);
 
-	d3.csv("data/pie-chart-ex.csv", function(d) {
+	d3.csv(filename, function(d) {
 	  d.population = +d.population;
 	  return d;
 	}, function(error, data) {
@@ -39,4 +39,4 @@
 	      .attr("dy", "0.35em")
 	      .text(function(d) { return d.data.age; });
 	});
-})();
+}
