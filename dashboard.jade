@@ -6,31 +6,27 @@ block content
 			h2.pull-left Welcome User!
 			button.btn.btn-primary.pull-right(ng-click="signOut()") Log Out
 
-	#graphs
+	#graphs(ng-controller="DashboardController" ng-init="init()")
 		.container-fluid
 			.row
 				#graph1.graph.col-md-4
-					svg#bar-chart(width="600" height="300")
-					//- .plus-button.img-circle.center-vertical
-					//- 	i.fa.fa-plus-circle(aria-hidden="true")
+					.plus-button.img-circle.center-vertical(onClick="showPopup(1)")
+						i.fa.fa-plus-circle(aria-hidden="true")
 				#graph2.graph.col-md-4
-					svg#line-chart(width="600" height="300")
-					//- .plus-button.img-circle.center-vertical
-					//- 	i.fa.fa-plus-circle(aria-hidden="true")
+					.plus-button.img-circle.center-vertical(onClick="showPopup(2)")
+						i.fa.fa-plus-circle(aria-hidden="true")
 				#graph3.graph.col-md-4
-					svg#pie-chart(width="300" height="300")
-					//- .plus-button.img-circle.center-vertical
-					//- 	i.fa.fa-plus-circle(aria-hidden="true")
+					.plus-button.img-circle.center-vertical(onClick="showPopup(3)")
+						i.fa.fa-plus-circle(aria-hidden="true")
 			.row
 				#graph4.graph.col-md-4
-					svg#waterfall-chart(width="600" height="300")
-					//- .plus-button.img-circle.center-vertical
-					//- 	i.fa.fa-plus-circle(aria-hidden="true")
+					.plus-button.img-circle.center-vertical(onClick="showPopup(4)")
+						i.fa.fa-plus-circle(aria-hidden="true")
 				#graph5.graph.col-md-4
 					.plus-button.img-circle.center-vertical(onClick="showPopup(5)")
 						i.fa.fa-plus-circle(aria-hidden="true")
 				#graph6.graph.col-md-4
-					.plus-button.img-circle.center-vertical
+					.plus-button.img-circle.center-vertical(onClick="showPopup(6)")
 						i.fa.fa-plus-circle(aria-hidden="true")
 
 	include pop-up
@@ -51,4 +47,5 @@ block content
 	script(src="javascripts/global-var.js")
 	script(src="javascripts/init-firebase.js")
 	script(src="javascripts/logout-controller.js")
-	script(src="javascripts/Dashboard-controller.js")
+	script(src="javascripts/dashboard-controller.js")
+	script(src="javascripts/pop-up-controller.js")

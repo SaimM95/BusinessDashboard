@@ -1,6 +1,6 @@
-#bar-chart {
+.bar-chart {
 	.bar {
-		fill: yellow;
+		fill: steelblue;
 	}
 
 	.bar:hover {
@@ -12,13 +12,13 @@
 	}
 }
 
-#line-chart {
+.line-chart {
 	.line {
-		stroke: red;
+		stroke: steelblue;
 	}
 }
 
-#pie-chart {
+.pie-chart {
 	.arc text {
 	  font: 10px sans-serif;
 	  text-anchor: middle;
@@ -29,7 +29,7 @@
 	}
 }
 
-#waterfall-chart {
+.waterfall-chart {
 	svg {
 	  font: 10px sans-serif;
 	}

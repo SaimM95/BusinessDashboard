@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="stylesheets/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.js"></script>
   </head>
   <body ng-app="AppBody">
     <div id="top-bar" ng-controller="LogoutController">
@@ -15,34 +15,34 @@
         <button ng-click="signOut()" class="btn btn-primary pull-right">Log Out</button>
       </div>
     </div>
-    <div id="graphs">
+    <div id="graphs" ng-controller="DashboardController" ng-init="init()">
       <div class="container-fluid">
         <div class="row">
           <div id="graph1" class="graph col-md-4">
-            <svg id="bar-chart" width="600" height="300"></svg>
+            <div onClick="showPopup(1)" class="plus-button img-circle center-vertical"><i aria-hidden="true" class="fa fa-plus-circle"></i></div>
           </div>
           <div id="graph2" class="graph col-md-4">
-            <svg id="line-chart" width="600" height="300"></svg>
+            <div onClick="showPopup(2)" class="plus-button img-circle center-vertical"><i aria-hidden="true" class="fa fa-plus-circle"></i></div>
           </div>
           <div id="graph3" class="graph col-md-4">
-            <svg id="pie-chart" width="300" height="300"></svg>
+            <div onClick="showPopup(3)" class="plus-button img-circle center-vertical"><i aria-hidden="true" class="fa fa-plus-circle"></i></div>
           </div>
         </div>
         <div class="row">
           <div id="graph4" class="graph col-md-4">
-            <svg id="waterfall-chart" width="600" height="300"></svg>
+            <div onClick="showPopup(4)" class="plus-button img-circle center-vertical"><i aria-hidden="true" class="fa fa-plus-circle"></i></div>
           </div>
           <div id="graph5" class="graph col-md-4">
             <div onClick="showPopup(5)" class="plus-button img-circle center-vertical"><i aria-hidden="true" class="fa fa-plus-circle"></i></div>
           </div>
           <div id="graph6" class="graph col-md-4">
-            <div class="plus-button img-circle center-vertical"><i aria-hidden="true" class="fa fa-plus-circle"></i></div>
+            <div onClick="showPopup(6)" class="plus-button img-circle center-vertical"><i aria-hidden="true" class="fa fa-plus-circle"></i></div>
           </div>
         </div>
       </div>
     </div>
     <div id="fade"></div>
-    <form id="pop-up" class="center-horizontal-vertical well form-horizontal">
+    <form id="pop-up" ng-controller="PopupController" ng-init="init()" class="center-horizontal-vertical well form-horizontal">
       <fieldset>
         <legend class="title">Add Graph</legend>
         <hr>
@@ -50,52 +50,20 @@
           <label class="col-md-3 control-label">Graph Type</label>
           <div class="col-md-8">
             <div class="input-group"><span class="input-group-addon"><i aria-hidden="true" class="fa fa-list"></i></span>
-              <select class="form-control">
+              <select id="graph-type" class="form-control">
                 <option value="">Select graph type</option>
-                <option>Line Graph</option>
+                <option>{{GraphType.BAR}}</option>
+                <option>{{GraphType.LINE}}</option>
+                <option>{{GraphType.PIE}}</option>
+                <option>{{GraphType.WATERFALL}}</option>
               </select>
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-3 control-label">Name</label> 
-           
-          <div class="col-md-8 inputGroupContainer">
-            <div class="input-group"><span class="input-group-addon"><i aria-hidden="true" class="fa fa-user"></i></span> 
-              <input name="first_name" placeholder="Your Name" type="text" class="form-control">
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-3 control-label">E-Mail</label> 
-           
-          <div class="col-md-8 inputGroupContainer">
-            <div class="input-group"><span class="input-group-addon"><i aria-hidden="true" class="fa fa-envelope-o"></i></span> 
-              <input name="email" placeholder="E-Mail Address" type="text" class="form-control">
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-3 control-label left-align">Phone #</label> 
-           
-          <div class="col-md-8 inputGroupContainer">
-            <div class="input-group"><span class="input-group-addon"><i aria-hidden="true" class="fa fa-phone"></i></span> 
-              <input name="phone" placeholder="(905)123-4567" type="text" class="form-control">
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-3 control-label">Message</label> 
-          <div class="col-md-8 inputGroupContainer">
-            <div class="input-group"><span class="input-group-addon"><i aria-hidden="true" class="fa fa-pencil"></i></span>  &#x9;
-              <textarea name="comment" placeholder="Type you message here..." class="form-control"></textarea>
             </div>
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-4 control-label"></label> 
           <div class="col-md-4">
-            <button onClick="addGraph()" class="btn btn-success">Add </button>
+            <button ng-click="addGraph()" class="btn btn-success">Add </button>
           </div>
         </div>
       </fieldset>
@@ -115,6 +83,7 @@
     <script src="javascripts/global-var.js"></script>
     <script src="javascripts/init-firebase.js"></script>
     <script src="javascripts/logout-controller.js"></script>
-    <script src="javascripts/Dashboard-controller.js"></script>
+    <script src="javascripts/dashboard-controller.js"></script>
+    <script src="javascripts/pop-up-controller.js"></script>
   </body>
 </html>

@@ -130,42 +130,42 @@ footer {
     color: white;
     margin: 0; }
 
-#bar-chart .bar {
-  fill: yellow; }
-#bar-chart .bar:hover {
+.bar-chart .bar {
+  fill: steelblue; }
+.bar-chart .bar:hover {
   fill: brown; }
-#bar-chart .axis--x path {
+.bar-chart .axis--x path {
   display: none; }
 
-#line-chart .line {
-  stroke: red; }
+.line-chart .line {
+  stroke: steelblue; }
 
-#pie-chart .arc text {
+.pie-chart .arc text {
   font: 10px sans-serif;
   text-anchor: middle; }
-#pie-chart .arc path {
+.pie-chart .arc path {
   stroke: #fff; }
 
-#waterfall-chart svg {
+.waterfall-chart svg {
   font: 10px sans-serif; }
-#waterfall-chart .axis path,
-#waterfall-chart .axis line {
+.waterfall-chart .axis path,
+.waterfall-chart .axis line {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges; }
-#waterfall-chart .rect {
+.waterfall-chart .rect {
   fill: #333; }
-#waterfall-chart .rect--negative {
+.waterfall-chart .rect--negative {
   fill: brown; }
-#waterfall-chart .label {
+.waterfall-chart .label {
   fill: white;
   font-size: 12px;
   text-anchor: end; }
-#waterfall-chart .label-change {
+.waterfall-chart .label-change {
   font-weight: bold; }
-#waterfall-chart .label-value {
+.waterfall-chart .label-value {
   fill-opacity: 0.8; }
-#waterfall-chart .label--negative {
+.waterfall-chart .label--negative {
   text-anchor: start; }
 
 /*# sourceMappingURL=style.css.map */

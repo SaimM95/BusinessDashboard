@@ -4,13 +4,30 @@ function showPopup(graphNumber) {
 	$("#pop-up").attr("data-graphnum", graphNumber);
 }
 
-function hidePopup() {
-	$("#fade").removeClass("active");
-	$("#pop-up").removeClass("active");
-}
+(function (app) {
 
-function addGraph() {
-	hidePopup();
-	var graphNumber = $("#pop-up").data().graphnum;
-	$("#graph" + graphNumber).addClass("active");
-}
+	app.controller('DashboardController', function($scope, $window) {
+
+		// Create sign in listener
+		// firebaseAuth.onAuthStateChanged(function(user) {
+		// 	if (user) {
+		// 		// User is signed in.
+		// 		log("User signed in");
+		// 	} else {
+		// 		// User is signed out.
+		// 		log("User signed out");
+		// 		goToHomePage();
+		// 	}
+		// });
+
+		$scope.signOut = function() {
+			log("signing out");
+			firebaseAuth.signOut();
+		}
+
+		function goToHomePage() {
+			$window.location.href = "index.html";
+		}
+	});
+
+})(appMain);
