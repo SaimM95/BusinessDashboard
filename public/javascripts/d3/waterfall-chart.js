@@ -11,7 +11,7 @@ function addWaterfallChart(selector, filename) {
   var g = svg.append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  d3.tsv(filename, function(d) {
+  d3.csv(filename, function(d) {
     d.value = +d.value;
     return d;
   }, function(error, data) {

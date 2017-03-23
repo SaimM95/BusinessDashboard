@@ -32,7 +32,7 @@
 			else if (selectedGraphType === $scope.GraphType.LINE) {
 				log("line graph selected - selector:" + selector);
 				$(selector).append('<svg class="line-chart" width="600" height="300"></svg>')
-				addLineChart(selector + "> svg", "data/line-chart-ex.tsv");
+				addLineChart(selector + "> svg", "data/line-chart-ex.csv");
 			} 
 			else if (selectedGraphType === $scope.GraphType.PIE) {
 				log("pie graph selected - selector:" + selector);
@@ -42,7 +42,7 @@
 			else if (selectedGraphType === $scope.GraphType.WATERFALL) {
 				log("waterfall graph selected - selector:" + selector);
 				$(selector).append('<svg class="waterfall-chart" width="600" height="300"></svg>')
-				addWaterfallChart(selector + "> svg", "data/waterfall-chart-ex.tsv");
+				addWaterfallChart(selector + "> svg", "data/waterfall-chart-ex.csv");
 			} 
 			else {
 				log("ERROR! No graph selected");
