@@ -24,22 +24,22 @@
 
 			var selector = "#graph" + selectedGraphNumber;
 
-			if (selectedGraphType === GraphType.BAR) {
+			if (selectedGraphType === $scope.GraphType.BAR) {
 				log("bar graph selected - selector:" + selector);
 				$(selector).append('<svg class="bar-chart" width="600" height="300"></svg>')
-				addBarChart(selector + "> svg", "data/bar-chart-ex.tsv");
+				addBarChart(selector + "> svg", "data/bar-chart-ex.csv");
 			} 
-			else if (selectedGraphType === GraphType.LINE) {
+			else if (selectedGraphType === $scope.GraphType.LINE) {
 				log("line graph selected - selector:" + selector);
 				$(selector).append('<svg class="line-chart" width="600" height="300"></svg>')
 				addLineChart(selector + "> svg", "data/line-chart-ex.tsv");
 			} 
-			else if (selectedGraphType === GraphType.PIE) {
+			else if (selectedGraphType === $scope.GraphType.PIE) {
 				log("pie graph selected - selector:" + selector);
 				$(selector).append('<svg class="pie-chart" width="300" height="300"></svg>')
 				addPieChart(selector + "> svg", "data/pie-chart-ex.csv");
 			} 
-			else if (selectedGraphType === GraphType.WATERFALL) {
+			else if (selectedGraphType === $scope.GraphType.WATERFALL) {
 				log("waterfall graph selected - selector:" + selector);
 				$(selector).append('<svg class="waterfall-chart" width="600" height="300"></svg>')
 				addWaterfallChart(selector + "> svg", "data/waterfall-chart-ex.tsv");
@@ -60,5 +60,5 @@
 			$("#pop-up").removeClass("active");
 		}
 	});
-	
+
 })(appMain);
