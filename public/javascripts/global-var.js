@@ -8,8 +8,23 @@ var SignInMode = {
 	"SIGNING_UP" : "Sign Up"
 }
 
-function log(text) {
-	if (LOGGING) console.log(text);
+appMain.run(function($rootScope) {
+    /*
+        Receive emitted message and broadcast it.
+    */
+    $rootScope.$on('emitAddGraph', function(event, graphType, dataFilePath) {
+        $rootScope.$broadcast('handleAddGraph', graphType, dataFilePath);
+    });
+});
+
+function log(text, tag) {
+	if (LOGGING) {
+		if (isNullOrEmpty(tag)) {
+			console.log(text);
+		} else {
+			console.log(tag + " - " + text);
+		}
+	}
 }
 
 function elog(code, msg) {
@@ -17,4 +32,8 @@ function elog(code, msg) {
 		console.log("ERROR:");
 		console.log(code + " - " + msg);
 	}
+}
+
+function isNullOrEmpty(text) {
+	return text == null || text == undefined || text === "";
 }
