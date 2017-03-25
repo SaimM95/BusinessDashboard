@@ -1,7 +1,7 @@
 //- Pull page fade in the background
-#fade
+#fade.active
 
-form#pop-up.center-horizontal-vertical.well.form-horizontal(ng-controller="PopupController" ng-init="init()")
+form#pop-up.active.center-horizontal-vertical.well.form-horizontal(ng-controller="PopupController" ng-init="init()")
     fieldset
       //- Form Name
       legend.title Add Graph
@@ -20,11 +20,31 @@ form#pop-up.center-horizontal-vertical.well.form-horizontal(ng-controller="Popup
               option {{GraphType.LINE}}
               option {{GraphType.PIE}}
               option {{GraphType.WATERFALL}}
-      //- Button
+      //- Upload
+      .form-group#upload
+        label.col-md-3.control-label Upload CSV
+        .col-md-8
+          .input-group
+            label.input-group-btn
+              span.btn.btn-primary
+                | Browse&mldr; 
+                input(type='file', style='display: none;', multiple='')
+            |               
+            input.form-control(type='text', readonly='')
+          //- Sample data Checkbox
+          .input-group
+            .checkbox
+              label
+                input(type="checkbox" value="")
+                | Use sample data.
+
       .form-group
-        label.col-md-4.control-label
-        | 
-        .col-md-4
-          button.btn.btn-success(ng-click="add()")
-            | Add 
+        label.col-md-3.control-label
+        .col-md-8
+          .input-group
+            p: #[a(href="#") Click here] to download example CSV files.
+
+      button.btn.btn-success(ng-click="add()")
+        | Add 
+
 //- /.container

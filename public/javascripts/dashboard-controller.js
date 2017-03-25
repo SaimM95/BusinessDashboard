@@ -30,7 +30,7 @@ appMain.controller('DashboardController', function($scope, $window) {
 	]
 
 	$scope.init = function() {
-		initGrid(graphsList);
+		// initGrid(graphsList);
 	}
 
 	$scope.showPopup = function(gridSection) {

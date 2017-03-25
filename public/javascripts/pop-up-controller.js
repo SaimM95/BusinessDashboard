@@ -28,6 +28,21 @@ appMain.controller("PopupController", function($scope) {
 		hidePopup();
 	}
 
+	
+	// Extracts name of file to be uploaded and shows it inside the input box for upload
+	$('#upload').find("input[type='file']").change(function() {
+		var filePath = $(this).val();
+
+		if (isNullOrEmpty(filePath)) {
+			log("NPE filepath", TAG);
+		} else {
+			var splitPath = filePath.split("\\");
+			var fileName = splitPath[splitPath.length-1];
+			log("Upload file:" + fileName , TAG);
+			$('#upload').find("input[type='text']").val(fileName);
+		}
+	});
+
 	// ----------------------------
 	// ----- HELPER FUNCTIONS -----
 	// ----------------------------
