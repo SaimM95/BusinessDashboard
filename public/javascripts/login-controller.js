@@ -9,29 +9,31 @@
 		}
 
 		// Create sign in listener
-		firebaseAuth.onAuthStateChanged(function(user) {
-			if (user) {
-				// User is signed in.
-				var displayName = user.displayName;
-				var email = user.email;
-				var emailVerified = user.emailVerified;
-				var photoURL = user.photoURL;
-				var isAnonymous = user.isAnonymous;
-				var uid = user.uid;
-				var providerData = user.providerData;
-				
-				log("User signed in");
-				// displaySuccessMessage("Successfully signed in");
-				hideMessage();
-				
-				if (isDashboardOpened == false) {
-					openDashboardPage();
+		if (CHECK_SIGNIN) {
+			firebaseAuth.onAuthStateChanged(function(user) {
+				if (user) {
+					// User is signed in.
+					var displayName = user.displayName;
+					var email = user.email;
+					var emailVerified = user.emailVerified;
+					var photoURL = user.photoURL;
+					var isAnonymous = user.isAnonymous;
+					var uid = user.uid;
+					var providerData = user.providerData;
+					
+					log("User signed in");
+					// displaySuccessMessage("Successfully signed in");
+					hideMessage();
+					
+					if (isDashboardOpened == false) {
+						openDashboardPage();
+					}
+				} else {
+					// User is signed out.
+					log("User signed out");
 				}
-			} else {
-				// User is signed out.
-				log("User signed out");
-			}
-		});
+			});
+		}
 
 		$scope.switchToSignUpMode = function () {
 			log("triggered sign up mode");

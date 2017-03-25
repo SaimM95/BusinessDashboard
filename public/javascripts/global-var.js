@@ -1,12 +1,4 @@
-var LOGGING = true;
 var appMain = angular.module('AppBody', []);
-
-var SignInMode = {
-	"SIGNED_IN" : "Sign Out",
-	"SIGNED_OUT" : "Sign In",
-	"SIGNING_IN" : "Sign In",
-	"SIGNING_UP" : "Sign Up"
-}
 
 appMain.run(function($rootScope) {
     /*
@@ -18,7 +10,7 @@ appMain.run(function($rootScope) {
 });
 
 function log(text, tag) {
-	if (LOGGING) {
+	if (DEV_MODE) {
 		if (isNullOrEmpty(tag)) {
 			console.log(text);
 		} else {
@@ -28,7 +20,7 @@ function log(text, tag) {
 }
 
 function elog(code, msg) {
-	if (LOGGING) {
+	if (DEV_MODE) {
 		console.log("ERROR:");
 		console.log(code + " - " + msg);
 	}
@@ -37,3 +29,5 @@ function elog(code, msg) {
 function isNullOrEmpty(text) {
 	return text == null || text == undefined || text === "";
 }
+
+log(DEV_MODE, "DEV Mode");

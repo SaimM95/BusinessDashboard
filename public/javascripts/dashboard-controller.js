@@ -8,18 +8,6 @@ var GraphType = {
 appMain.controller('DashboardController', function($scope, $window) {
 	var TAG = "DashboardController";
 
-	// Create sign in listener
-	// firebaseAuth.onAuthStateChanged(function(user) {
-	// 	if (user) {
-	// 		// User is signed in.
-	// 		log("User signed in");
-	// 	} else {
-	// 		// User is signed out.
-	// 		log("User signed out");
-	// 		goToHomePage();
-	// 	}
-	// });
-
 	var graphsList = [
 		{
 			"type": GraphType.BAR,
@@ -39,6 +27,14 @@ appMain.controller('DashboardController', function($scope, $window) {
 
 	// Receive broadcast emitted by PopupController
 	$scope.$on('handleAddGraph', function(event, graphType, dataFilePath) {
+		addGraph(graphType, dataFilePath);
+	});
+
+	// ----------------------------
+	// ----- HELPER FUNCTIONS -----
+	// ----------------------------
+
+	function addGraph(graphType, dataFilePath) {
 		log("Adding graph. Type:" + graphType + "  File path:" + dataFilePath, TAG);
 
 		var gridSelector = "#graph" + $scope.selectedGridSection;
@@ -68,20 +64,6 @@ appMain.controller('DashboardController', function($scope, $window) {
 		else {
 			log("Unknown graph type", TAG);
 		}
-		
-	});
-
-	$scope.signOut = function() {
-		log("signing out");
-		firebaseAuth.signOut();
-	}
-
-	// ----------------------------
-	// ----- HELPER FUNCTIONS -----
-	// ----------------------------
-
-	function goToHomePage() {
-		$window.location.href = "index.html";
 	}
 
 	function initGrid(graphsList) {
