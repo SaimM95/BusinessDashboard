@@ -12,7 +12,21 @@ appMain.controller('DashboardController', function($scope, $window) {
 		{
 			"type": GraphType.BAR,
 			"file": "data/bar-chart-ex.csv"
-		}
+		},
+		{},
+		{
+			"type": GraphType.PIE,
+			"file": "data/pie-chart-ex.csv"
+		},
+		{
+			"type": GraphType.LINE,
+			"file": "data/line-chart-ex.csv"
+		},
+		{
+			"type": GraphType.WATERFALL,
+			"file": "data/waterfall-chart-ex.csv"
+		},
+		{}
 	]
 
 	$scope.init = function() {
@@ -27,17 +41,17 @@ appMain.controller('DashboardController', function($scope, $window) {
 
 	// Receive broadcast emitted by PopupController
 	$scope.$on('handleAddGraph', function(event, graphType, dataFilePath) {
-		addGraph(graphType, dataFilePath);
+		addGraph(graphType, dataFilePath, $scope.selectedGridSection);
 	});
 
 	// ----------------------------
 	// ----- HELPER FUNCTIONS -----
 	// ----------------------------
 
-	function addGraph(graphType, dataFilePath) {
+	function addGraph(graphType, dataFilePath, gridSection) {
 		log("Adding graph. Type:" + graphType + "  File path:" + dataFilePath, TAG);
 
-		var gridSelector = "#graph" + $scope.selectedGridSection;
+		var gridSelector = "#graph" + gridSection;
 
 		$(gridSelector).addClass("active");
 
@@ -67,7 +81,20 @@ appMain.controller('DashboardController', function($scope, $window) {
 	}
 
 	function initGrid(graphsList) {
-		log("Graphs List:");
-		log(graphsList);
+		listSize = graphsList.length;
+
+		if (listSize > 6) {
+			log("graphsList too long", TAG);
+			return;
+		}
+
+		for (var i = 0; i < listSize; i++) {
+			var graphType = graphsList[i].type;
+			var dataFilePath = graphsList[i].file;
+
+			if (!isNullOrEmpty(graphType) && !isNullOrEmpty(dataFilePath)) {
+				addGraph(graphType, dataFilePath, i+1);
+			}
+		}
 	}
 });
