@@ -2,10 +2,14 @@ var appMain = angular.module('AppBody', []);
 
 appMain.run(function($rootScope) {
     /*
-        Receive emitted message and broadcast it.
+        Receive emitted messages and broadcast it.
     */
     $rootScope.$on('emitAddGraph', function(event, graphType, fileName, isUseSampleData, graphDownloadURL) {
         $rootScope.$broadcast('handleAddGraph', graphType, fileName, isUseSampleData, graphDownloadURL);
+    });
+
+    $rootScope.$on('emitUserSignedIn', function(event, user) {
+        $rootScope.$broadcast('handlePostUserSignedIn', user);
     });
 });
 

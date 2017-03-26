@@ -1,23 +1,14 @@
 appMain.controller('DashboardController', function($scope, $window) {
 	var TAG = "DashboardController";
 
-	// Create sign in listener
-	if (CHECK_SIGNIN) {
-		firebaseAuth.onAuthStateChanged(function(user) {
-			if (user) {
-				// User is signed in.
-				log("User signed in");
-				initDashboard();
-			} else {
-				// User is signed out.
-				log("User signed out");
-				goToHomePage();
-			}
-		});
-	}
+	// Recieve broadcast emitted by LogoutController
+	$scope.$on('handlePostUserSignedIn', function(event, user) {
+		$scope.user = user;
+		initDashboard();
+	});
 
 	var initDashboard = function() {
-		var userId = firebaseAuth.currentUser.uid;
+		var userId = $scope.user.uid;
 
 		firebaseDB.ref(userId + "/graphs").once('value').then(function(snapshot) {
 			log("Read from DB:", TAG);
@@ -55,7 +46,7 @@ appMain.controller('DashboardController', function($scope, $window) {
 			"sample": isUseSampleData
 		}
 
-		var userId = firebaseAuth.currentUser.uid;
+		var userId = $scope.user.uid;
 		writeGraphDataToDB(userId, gridSection, graphData);
 
 		addGraph(graphType, graphDownloadURL, gridSection);
@@ -105,7 +96,7 @@ appMain.controller('DashboardController', function($scope, $window) {
 			return;
 		}
 
-		var userId = firebaseAuth.currentUser.uid;
+		var userId = $scope.user.uid;
 		var path = userId + "/" + fileName;
 		log("Storage Path:" + path, TAG);
 
@@ -176,10 +167,6 @@ appMain.controller('DashboardController', function($scope, $window) {
 		log("SVG selector:", TAG);
 		log($(svgSelector));	
 		return !isNullOrEmpty($(svgSelector));
-	}
-
-	function goToHomePage() {
-		$window.location.href = "index.html";
 	}
 
 });

@@ -1,9 +1,9 @@
 extends layout
 
 block content
-	#top-bar(ng-controller="LogoutController")
+	#top-bar(ng-controller="LogoutController" ng-init="init()")
 		.container.center-vertical
-			h2.pull-left Welcome User!
+			h2.pull-left Welcome {{username}}!
 			button.btn.btn-primary.pull-right(ng-click="signOut()") Log Out
 
 	#graphs(ng-controller="DashboardController")
