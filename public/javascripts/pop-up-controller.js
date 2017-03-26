@@ -3,43 +3,64 @@ appMain.controller("PopupController", function($scope) {
 
 	$scope.init = function() {
 		// Get a reference to dashboard-controller.GraphType inside $scope (used to populate the Graph Types dropdown)
-		$scope.GraphType = GraphType;	
+		$scope.GraphType = GraphType;
+		$scope.fileName = "n/a";
 	}
 
 	$scope.add = function() {
-		var selectedGraphType = $("#graph-type").val();
-		log("selected graph type:" + selectedGraphType, TAG);
+		var selectedGraphType = $scope.type;
 
 		if (isNullOrEmpty(selectedGraphType)) {
 			log("No graph type selected", TAG);
 			return;
 		}
 
-		var dataFilePath = getExampleData(selectedGraphType);
+		var graphDownloadURL = $scope.graphDownloadURL;
 
-		if (isNullOrEmpty(dataFilePath)) {
-			log("Empty data file path", TAG);
+		var isUseSampleData = document.getElementById("sample-data-checkbox").checked;
+		log("use sample data:" + isUseSampleData, TAG);
+
+		if (isUseSampleData) {
+			graphDownloadURL = getExampleDataUrl(selectedGraphType);
+		}
+
+		if (isNullOrEmpty(graphDownloadURL)) {
+			log("No data file found", TAG);
 			return;
 		}
 
 		// Emit message so it can be broadcasted by appMain.run() and received by DashboardController
-		$scope.$emit('emitAddGraph', selectedGraphType, dataFilePath);
+		$scope.$emit('emitAddGraph', selectedGraphType, $scope.fileName, isUseSampleData, graphDownloadURL);
 
 		hidePopup();
 	}
 
+	$("#graph-type").change(function() {
+		$scope.type = $(this).val();
+		log("selected graph type:" + $scope.type, TAG);
+
+		if (!isNullOrEmpty($scope.type)) {
+			$("#upload").show();
+		} else {
+			$("#upload").hide();
+		}
+	})
 	
 	// Extracts name of file to be uploaded and shows it inside the input box for upload
 	$('#upload').find("input[type='file']").change(function() {
-		var filePath = $(this).val();
+		log("File object:", TAG);
+		log($(this));
 
-		if (isNullOrEmpty(filePath)) {
-			log("NPE filepath", TAG);
+		// Only single file upload possible so files.length == 1
+		var file = $(this)[0].files[0];
+
+		if (isNullOrEmpty(file)) {
+			log("No file found", TAG);
 		} else {
-			var splitPath = filePath.split("\\");
-			var fileName = splitPath[splitPath.length-1];
-			log("Upload file:" + fileName , TAG);
-			$('#upload').find("input[type='text']").val(fileName);
+			log("File name:" + file.name , TAG);
+			$('#upload').find("input[type='text']").val(file.name);
+
+			uploadFile(file);
 		}
 	});
 
@@ -47,25 +68,51 @@ appMain.controller("PopupController", function($scope) {
 	// ----- HELPER FUNCTIONS -----
 	// ----------------------------
 
+	function uploadFile(file) {
+		log("File to upload:", TAG);
+		log(file);
+
+		var selectedGraphType = $scope.type;
+
+		if (isNullOrEmpty(selectedGraphType)) {
+			log("No graph type selected", TAG);
+			return;
+		}
+
+		var userId = firebaseAuth.currentUser.uid;
+		var path = userId + "/" + file.name;
+		var ref = firebaseStorageRef.child(path);
+		var uploadTask = ref.put(file);
+
+		// Register three observers:
+		// 1. 'state_changed' observer, called any time the state changes
+		// 2. Error observer, called on failure
+		// 3. Completion observer, called on successful completion
+		uploadTask.on('state_changed', function(snapshot){
+		  // Observe state change events such as progress, pause, and resume
+		  // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+		  var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+		  var progressBar = $("#progress-bar .progress-bar");
+		  progressBar.attr("aria-valuenow", progress);
+		  progressBar.css("width", progress + "%");
+		  progressBar.text(progress + "%");
+		}, 
+		function(error) {
+		  // Handle unsuccessful uploads
+		  log('File upload FAILED!', TAG);
+		}, 
+		function() {
+		  // Handle successful uploads on complete
+		  var downloadURL = uploadTask.snapshot.downloadURL;
+		  log('File uploaded successfully! URL:' + downloadURL, TAG);
+		  $scope.graphDownloadURL = downloadURL;
+		  $scope.fileName = file.name;
+		});
+	}
+
 	function hidePopup() {
 		$("#fade").removeClass("active");
 		$("#pop-up").removeClass("active");
 	}
 
-	function getExampleData(graphType) {
-		if (graphType === $scope.GraphType.BAR) {
-			return "data/bar-chart-ex.csv";
-		} 
-		else if (graphType === $scope.GraphType.LINE) {
-			return "data/line-chart-ex.csv";
-		} 
-		else if (graphType === $scope.GraphType.PIE) {
-			return "data/pie-chart-ex.csv";
-		} 
-		else if (graphType === $scope.GraphType.WATERFALL) {
-			return "data/waterfall-chart-ex.csv";
-		}
-
-		return "";
-	}
 });

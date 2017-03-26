@@ -5,7 +5,7 @@ var GraphType = {
 	"WATERFALL":"Waterfall Chart"
 }
 
-function getExampleData(graphType) {
+function getExampleDataUrl(graphType) {
 	if (graphType === GraphType.BAR) {
 		return "data/bar-chart-ex.csv";
 	} 
