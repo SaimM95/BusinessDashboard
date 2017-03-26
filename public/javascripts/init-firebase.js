@@ -9,5 +9,8 @@ var config = {
 firebase.initializeApp(config);
 
 var firebaseAuth = firebase.auth();
+var firebaseDB = firebase.database();
+var firebaseStorage = firebase.storage();
+var firebaseStorageRef = firebaseStorage.ref();
 
 log("Loaded firebase");

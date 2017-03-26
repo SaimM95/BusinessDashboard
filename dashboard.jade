@@ -6,7 +6,7 @@ block content
 			h2.pull-left Welcome User!
 			button.btn.btn-primary.pull-right(ng-click="signOut()") Log Out
 
-	#graphs(ng-controller="DashboardController" ng-init="init()")
+	#graphs(ng-controller="DashboardController")
 		.container-fluid
 			.row
 				#graph1.graph.col-md-4
@@ -47,5 +47,6 @@ block content
 	script(src="javascripts/global-var.js")
 	script(src="javascripts/init-firebase.js")
 	script(src="javascripts/logout-controller.js")
+	script(src="javascripts/dashboard.js")
 	script(src="javascripts/dashboard-controller.js")
 	script(src="javascripts/pop-up-controller.js")

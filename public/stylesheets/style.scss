@@ -5,6 +5,10 @@ body {
 	background-color: $color_SkyBlue;
 }
 
+a:hover {
+	cursor: pointer;
+}
+
 @import "sass/signin";
 @import "sass/dashboard";
 @import "sass/graphs";
