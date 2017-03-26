@@ -1,7 +1,7 @@
 //- Pull page fade in the background
-#fade.active
+#fade
 
-form#pop-up.active.center-horizontal-vertical.well.form-horizontal(ng-controller="PopupController" ng-init="init()")
+form#pop-up.center-horizontal-vertical.well.form-horizontal(ng-controller="PopupController" ng-init="init()")
     fieldset
       //- Form Name
       legend.title Add Graph
@@ -20,31 +20,38 @@ form#pop-up.active.center-horizontal-vertical.well.form-horizontal(ng-controller
               option {{GraphType.LINE}}
               option {{GraphType.PIE}}
               option {{GraphType.WATERFALL}}
+
       //- Upload
       .form-group#upload
         label.col-md-3.control-label Upload CSV
         .col-md-8
           .input-group
             label.input-group-btn
-              span.btn.btn-primary
-                | Browse&mldr; 
-                input(type='file', style='display: none;', multiple='')
-            |               
+              span.btn.btn-primary Browse&mldr; 
+                input(type='file', style='display: none;')
             input.form-control(type='text', readonly='')
+
           //- Sample data Checkbox
           .input-group
             .checkbox
               label
-                input(type="checkbox" value="")
-                | Use sample data.
+                input#sample-data-checkbox(type="checkbox" value="") 
+                | Use sample data
 
       .form-group
         label.col-md-3.control-label
         .col-md-8
           .input-group
-            p: #[a(href="#") Click here] to download example CSV files.
+            p: #[a(href="#") Click here] to download example CSV files
 
-      button.btn.btn-success(ng-click="add()")
-        | Add 
+      //- Progress bar
+      .form-group#progress-bar
+        label.col-md-3.control-label
+        .col-md-8
+          .input-group
+            .progress
+              .progress-bar.progress-bar-info(role='progressbar', aria-valuenow='0', aria-valuemin='0', aria-valuemax='100')
+
+      button.btn.btn-success(ng-click="add()") Add
 
 //- /.container
