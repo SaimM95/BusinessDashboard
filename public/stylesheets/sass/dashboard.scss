@@ -96,6 +96,15 @@
 		width: 80%;
 	}
 
+	#close-button {
+		padding: 2px 6px;
+
+		&:hover {
+			background-color: #ccc;
+			border-radius: 4px;
+		}
+	}
+
 	.title {
 		border: none;
 		margin: 0;

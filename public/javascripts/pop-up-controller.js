@@ -32,7 +32,7 @@ appMain.controller("PopupController", function($scope) {
 		// Emit message so it can be broadcasted by appMain.run() and received by DashboardController
 		$scope.$emit('emitAddGraph', selectedGraphType, $scope.fileName, isUseSampleData, graphDownloadURL);
 
-		hidePopup();
+		$scope.hidePopup();
 	}
 
 	$("#graph-type").change(function() {
@@ -110,7 +110,7 @@ appMain.controller("PopupController", function($scope) {
 		});
 	}
 
-	function hidePopup() {
+	$scope.hidePopup = function() {
 		$("#fade").removeClass("active");
 		$("#pop-up").removeClass("active");
 	}

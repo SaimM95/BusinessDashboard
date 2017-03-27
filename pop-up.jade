@@ -2,6 +2,9 @@
 #fade
 
 form#pop-up.center-horizontal-vertical.well.form-horizontal(ng-controller="PopupController" ng-init="init()")
+    #close-button.pull-right(ng-click="hidePopup()")
+      i.fa.fa-times(aria-hidden="true")
+
     fieldset
       //- Form Name
       legend.title Add Graph
