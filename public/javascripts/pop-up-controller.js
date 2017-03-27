@@ -5,6 +5,7 @@ appMain.controller("PopupController", function($scope) {
 		// Get a reference to dashboard-controller.GraphType inside $scope (used to populate the Graph Types dropdown)
 		$scope.GraphType = GraphType;
 		$scope.fileName = "n/a";
+		$scope.exampleDataUrl = "#";
 	}
 
 	$scope.add = function() {
@@ -21,7 +22,7 @@ appMain.controller("PopupController", function($scope) {
 		log("use sample data:" + isUseSampleData, TAG);
 
 		if (isUseSampleData) {
-			graphDownloadURL = getExampleDataUrl(selectedGraphType);
+			graphDownloadURL = $scope.exampleDataUrl;
 		}
 
 		if (isNullOrEmpty(graphDownloadURL)) {
@@ -41,6 +42,9 @@ appMain.controller("PopupController", function($scope) {
 
 		if (!isNullOrEmpty($scope.type)) {
 			$("#upload").show();
+			$scope.exampleDataUrl = getExampleDataUrl($scope.type);
+			$scope.$apply();
+			log("Example data download url:" + $scope.exampleDataUrl, TAG);
 		} else {
 			$("#upload").hide();
 		}
